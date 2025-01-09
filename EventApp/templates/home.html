@@ -1,0 +1,18 @@
+{% extends "base.html" %} 
+
+{% block title %} 
+Home Page 
+{% endblock %}
+
+{% block content %}
+<div className="h-screen flex justify-center flex-col">
+  <div className="w-full flex justify-center text-2xl">
+      This is the Home Page            </div>
+</div>
+<form action="{% url 'events' %}" method="get">
+  <label for="bet-query">What do you want to predict?</label><br>
+  <input type="text" id="bet-query" name="bet_query" placeholder="Enter your prediction here..." required>
+  <button type="submit">Enter</button>
+</form>
+{% endblock %}
+

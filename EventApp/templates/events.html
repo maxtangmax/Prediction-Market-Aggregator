@@ -1,0 +1,19 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<h1> Events </h1>
+<form action="/reloadevents">
+  <button id="stat-btn" class="btn">
+    Reload Events
+  </button>
+</form>
+
+<u1>
+  {% for event in Events %}
+  <li>
+    {{event.title}}
+  </li>
+  {% endfor %}
+</u1>
+{% endblock %}
+
