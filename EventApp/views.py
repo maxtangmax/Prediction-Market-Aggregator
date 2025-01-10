@@ -10,6 +10,11 @@ def events(request):
   #populate model database
   event_api = EventAPI()
   event_api.parsePolyMarketOpenEvents()
-  Events_obj = Events.objects.all()
-  return render(request, "events.html", {"Events":Events_obj})
+  user_prediction = request.GET.get('bet_query', '')
+  if user_prediction:
+        Events_obj = Events.objects.filter(title__icontains=user_prediction)  # Case-insensitive search
+  else:
+      Events_obj = Events.objects.all()  # Show all events if no prediction is provided
+
+  return render(request, "events.html", {"Events": Events_obj, "user_prediction": user_prediction})
 

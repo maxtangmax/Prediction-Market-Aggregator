@@ -1,19 +1,29 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
+
+{% block title %}
+Events Page
+{% endblock %}
 
 {% block content %}
-<h1> Events </h1>
-<form action="/reloadevents">
-  <button id="stat-btn" class="btn">
-    Reload Events
-  </button>
-</form>
+<h1>Events</h1>
 
-<u1>
-  {% for event in Events %}
-  <li>
-    {{event.title}}
-  </li>
-  {% endfor %}
-</u1>
+<div class="row">
+    {% for event in Events %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ event.title }}</h5>
+                <div class="card-text flex-grow-1 overflow-auto" style="max-height: 200px;">
+                    {{ event.description }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <p>No events found.</p>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
 

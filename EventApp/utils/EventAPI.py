@@ -9,7 +9,7 @@ class EventAPI:
 
 
   def parsePolyMarketOpenEvents(self):
-    r = requests.get(self.PM_events_endpoint+"?closed=false&limit=100")
+    r = requests.get(self.PM_events_endpoint+"?closed=false&limit=1000")
     response = r.json()
     for event in response:
       #populate Events model with events
