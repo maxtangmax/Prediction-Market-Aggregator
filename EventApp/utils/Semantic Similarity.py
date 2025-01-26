@@ -7,6 +7,7 @@ from typing import List, Union
 from numpy.linalg import norm 
 
 
+
 load_dotenv()
 OPEN_AI_API_KEY = os.getenv("OPEN_AI_API_KEY")
 
@@ -45,4 +46,7 @@ class SemanticSimilarity(object):
         embedding1 = self.text2vector(text1)
         embedding2 = self.text2vector(text2)
 
+
         return np.dot(embedding1, embedding2)/(norm(embedding1)* norm(embedding2))
+
+        
