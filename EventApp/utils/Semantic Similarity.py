@@ -1,4 +1,3 @@
-
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -6,6 +5,7 @@ import numpy as np
 import logging
 from typing import List, Union
 from numpy.linalg import norm 
+
 
 
 load_dotenv()
@@ -21,7 +21,7 @@ class SemanticSimilarity(object):
     This class provides methods to convert text to embeddings and compute
     similarity between texts using cosine similarity.
     '''
-    
+
     def __init__(self, model="text-embedding-3-small"):
         """
         Initialize the SemanticSimilarity class with OpenAI client and model
@@ -38,7 +38,7 @@ class SemanticSimilarity(object):
         model=self.model)
         embeddings = np.array(response.data[0].embedding)
         return embeddings
-    
+
     def compute_similarity(self, text1, text2):
         '''
         Compute the similarity between two texts
@@ -46,4 +46,7 @@ class SemanticSimilarity(object):
         embedding1 = self.text2vector(text1)
         embedding2 = self.text2vector(text2)
 
+
         return np.dot(embedding1, embedding2)/(norm(embedding1)* norm(embedding2))
+
+        
